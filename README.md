@@ -54,6 +54,21 @@ You can use suggest method like so...
 For more information and structure look at this resource:
 http://developer.zemanta.com/docs/suggest/
 
+### Client options
+
+Zemanta API methods also provide some additional options. You can use them like so:
+
+	suggests = z.suggest("
+		Ronald Reagan je bil 40. predsednik ZDA v letih 1981-1989 in 33. guverner drzave Kalifornija v letih 1967-1975.
+		Pred vstopom v politiko je bil Reagan tudi napovedovalec, filmski igralec in predsednik Ameriskega zdruzenja igralcev.
+	",{
+		return_images: 0,	# Don't return any images.
+		articles_limit: 2 	# Limit of articles returned
+	})
+
+For more options please read:
+http://developer.zemanta.com/docs/suggest/
+
 
 ## About
 
