@@ -18,7 +18,7 @@ class Zemanta
 	end
 
 	# Provide contextual metadata about text
-	# http://developer.zemanta.com/docs/suggest/
+	# See: http://developer.zemanta.com/docs/suggest/
 	def suggest text, options={}
 		get("suggest",options.merge!({
 			text: text
@@ -35,8 +35,9 @@ class Zemanta
 		}))
 	end
 
-	# TODO: Implement...
-	def preferences
+	# Get preferences of specific user. 
+	def preferences options={}
+		get("preferences",options)
 	end
 
 	# Get REST service with JSON response

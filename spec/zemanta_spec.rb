@@ -87,4 +87,13 @@ surface which will be analyzed as a possible habitat for life.
 			suggests["markup"]["text"].should_not be_nil
 		end
 	end
+
+	context "#preferences" do
+		let(:z){ Zemanta.new(ENV["ZEMANTA_KEY"]) }
+		it "can have #preferences" do
+			z.should respond_to :preferences
+			prefs = z.preferences
+			prefs["user"].should_not be_nil
+		end
+	end
 end

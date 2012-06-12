@@ -38,17 +38,11 @@ The 3rd option is to set enviroment variable "ZEMANTA_KEY" and client will pick 
 Zemanta API provides 3 methods; and so does this client.
 You can use suggest method like so...
 
-	z = Zemanta.new.suggest("My long text goes here...")
+	suggests = Zemanta.new.suggest("My long text goes here...")
 
 	suggests['articles'] 	# All the suggested articles
 	suggests['images'] 		# All suggested images
-
-	suggests['markup']
-	suggests['signature']
-	suggests['keywords']
-	suggests['rid']
-	suggests['categories']
-	suggests['rich_objects']
+	...
 
 For more information and structure look at this #suggest resource.
 
@@ -58,12 +52,19 @@ http://developer.zemanta.com/docs/suggest/
 
 In comparison to #zemanta_suggest, this method returns only links to semantical entities.
 
-	z = Zemanta.new.suggest_markup("My long text goes here...")
+	suggests = Zemanta.new.suggest_markup("My long text goes here...")
 	suggests['markup']
 
 For more information about this response see suggest_markup method documentation.
 
 http://developer.zemanta.com/docs/suggest_markup/
+
+### #preferences method
+
+Method #preferences allows Zemanta API users to get preferences of specific user. 
+
+	me = Zemanta.new.preferences
+	me['user']	# Get nice key...
 
 ### Client options
 
@@ -78,6 +79,10 @@ Zemanta API methods also provide some additional options. You can use them like 
 
 For more options please read:
 http://developer.zemanta.com/docs/suggest/
+
+## Limits
+
+Your daily limit is set at 1.000 calls per day. Send us email to support@zemanta.com to make it 10.000 calls per day.
 
 ## Testing and developement
 
