@@ -58,6 +58,32 @@ describe Zemanta do
 			suggests['categories'].should_not be_nil
 			suggests['rich_objects'].should_not be_nil
 		end
+
+		it "can do some additional #attributes" do
+			suggests = z.suggest("
+				Ronald Reagan je bil 40. predsednik ZDA v letih 1981-1989 in 33. guverner drzave Kalifornija v letih 1967-1975.
+				Pred vstopom v politiko je bil Reagan tudi napovedovalec, filmski igralec in predsednik Ameriskega zdruzenja igralcev.
+			",{
+				return_images: 0,
+				articles_limit: 2
+			})
+
+			suggests['articles'].size.should == 2
+			suggests['images'].should be_nil
+		end
+
+=begin
+		it "has \"magic\" methods" do
+			suggests = z.suggest("
+				Ronald Reagan je bil 40. predsednik ZDA v letih 1981-1989 in 33. guverner drzave Kalifornija v letih 1967-1975.
+				Pred vstopom v politiko je bil Reagan tudi napovedovalec, filmski igralec in predsednik Ameriskega zdruzenja igralcev.
+			")
+
+			suggests.should respond_to :articles
+			suggests['articles'].should == suggests.articles
+		end
+=end
+
 	end
 
 end

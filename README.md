@@ -19,12 +19,40 @@ Or install it as seperate gem
 
 ## Usage
 
+You can you client from your Ruby code or from comand line.
+
+### Configuration
+
+Zemanta API requires API key, so to use this client you also have to set the key. You can do this like so...
+
 	zemanta = Zemanta.new "API_KEY_GOES_HERE"
-	suggests = zemanta.suggest("My long text goes here...")
+
+Or if you like class wide key...
+
+	Zemanta.api_key = "API_KEY_GOES_HERE"
+
+The 3rd option is to set enviroment variable "ZEMANTA_KEY" and client will pick it up.
+
+### Suggests
+
+Zemanta API provides 3 methods; and so does this client.
+You can use suggest method like so...
+
+	z = Zemanta.new
+	suggests = z.suggest("My long text goes here...")
 
 	suggests['articles'] 	# All the suggested articles
 	suggests['images'] 		# All suggested images
-	...
+
+	suggests['markup']
+	suggests['signature']
+	suggests['keywords']
+	suggests['rid']
+	suggests['categories']
+	suggests['rich_objects']
+
+For more information and structure look at this resource:
+http://developer.zemanta.com/docs/suggest/
 
 
 ## About
