@@ -17,6 +17,16 @@ Or install it as seperate gem
 
 	$ gem install zemanta
 
+## Usage
+
+	zemanta = Zemanta.new "API_KEY_GOES_HERE"
+	suggests = zemanta.suggest("My long text goes here...")
+
+	suggests['articles'] 	# All the suggested articles
+	suggests['images'] 		# All suggested images
+	...
+
+
 ## About
 
 This is unofficial client and comes without any warranty. Please

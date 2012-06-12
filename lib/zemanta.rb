@@ -14,10 +14,7 @@ class Zemanta
 	# Initialize the client
 	def initialize(api_key=nil)
 		@@api_key = api_key unless api_key.nil?
-		
-		if @@api_key.nil? and not(ENV["ZEMANTA_KEY"].nil?)
-			@@api_key = ENV["ZEMANTA_KEY"] 
-		end
+		@@api_key = ENV["ZEMANTA_KEY"] if @@api_key.nil? and not(ENV["ZEMANTA_KEY"].nil?)
 	end
 
 	# Provide contextual metadata about text
@@ -40,13 +37,25 @@ class Zemanta
 	def preferences
 	end
 
+	# Get REST service with JSON response
 	def get(method,options)
 		options.merge!({
-			method: "zemanta.#{method}",
-			api_key: api_key,
-			format: "json"
-		})
-		self.class.get('/services/rest/0.0/',query:options)
+			method: "zemanta.#{method}", api_key: @@api_key,
+			format: "json"})
+
+		handle_response(
+			self.class.get('/services/rest/0.0/',query:options),
+		options)
 	end
 
+	# Handle response from service
+	def handle_response response, options={}
+		unless response['status'] =~ /ok/
+			msg = response.parsed_response.match("<h1>(.+?)</h1>")[1]
+			msg = "Error." if msg.nil?
+			throw "Zemanta: %s" % msg
+		end
+
+		response
+	end
 end

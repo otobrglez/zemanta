@@ -30,19 +30,33 @@ describe Zemanta do
 			client_2 = Zemanta.new
 			client_2.api_key.should == "BBB"
 		end
+
+		it "should break on fake api_key" do
+			client = Zemanta.new("FAKE")
+			expect{
+				suggests = client.suggest("fake it till u make it...")
+			}.to raise_error
+		end
 	end
 
 	context "#suggest method" do
-		let(:zemanta){ Zemanta.new }
+		let(:z){ Zemanta.new(ENV["ZEMANTA_KEY"]) }
 
 		it "can #suggest to some text" do
-			suggests = zemanta.suggest("
+			suggests = z.suggest("
 				The Phoenix Mars Lander has successfully deployed its robotic arm and
 				tested other instruments including a laser designed to detect dust,
 				clouds, and fog. 
 			")
 
-			puts suggests
+			suggests['articles'].should_not be_nil
+			suggests['images'].should_not be_nil
+			suggests['markup'].should_not be_nil
+			suggests['signature'].should_not be_nil
+			suggests['keywords'].should_not be_nil
+			suggests['rid'].should_not be_nil
+			suggests['categories'].should_not be_nil
+			suggests['rich_objects'].should_not be_nil
 		end
 	end
 
