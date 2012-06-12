@@ -68,7 +68,7 @@ parser = OptionParser.new do |opt|
   	end
 end
 
-# Dirty hack!!! 
+# Dirty/ugly hack!!! 
 if not(ARGV[1].nil?) and ARGV[1][0] != "-"
 	options[:text] = ARGV[1]
 end
