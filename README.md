@@ -17,7 +17,7 @@ Or install it as seperate gem
 
 	$ gem install zemanta
 
-## Usage
+## Using Zemanta in your application
 
 You can you client from your Ruby code or from comand line.
 
@@ -38,8 +38,7 @@ The 3rd option is to set enviroment variable "ZEMANTA_KEY" and client will pick 
 Zemanta API provides 3 methods; and so does this client.
 You can use suggest method like so...
 
-	z = Zemanta.new
-	suggests = z.suggest("My long text goes here...")
+	z = Zemanta.new.suggest("My long text goes here...")
 
 	suggests['articles'] 	# All the suggested articles
 	suggests['images'] 		# All suggested images
@@ -59,8 +58,7 @@ http://developer.zemanta.com/docs/suggest/
 Zemanta API methods also provide some additional options. You can use them like so:
 
 	suggests = z.suggest("
-		Ronald Reagan je bil 40. predsednik ZDA v letih 1981-1989 in 33. guverner drzave Kalifornija v letih 1967-1975.
-		Pred vstopom v politiko je bil Reagan tudi napovedovalec, filmski igralec in predsednik Ameriskega zdruzenja igralcev.
+		Some text here...
 	",{
 		return_images: 0,	# Don't return any images.
 		articles_limit: 2 	# Limit of articles returned
@@ -68,7 +66,6 @@ Zemanta API methods also provide some additional options. You can use them like 
 
 For more options please read:
 http://developer.zemanta.com/docs/suggest/
-
 
 ## About
 
