@@ -78,7 +78,6 @@ parser.parse!
 ##### The thing ######
 
 def output response, options
-	puts options[:output_type] 
 	if options[:output_type] =~ /json/i
 		puts response.to_json
 	else
