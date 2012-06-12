@@ -95,4 +95,4 @@ read and use documentation provided by Zemanta.
 
 ## Contribution and authors
 
-Oto Brglez - <oto.brglez@opalab.com>
+Oto Brglez / @otobrglez / <oto.brglez@opalab.com>
