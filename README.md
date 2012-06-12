@@ -1,6 +1,6 @@
 # Ruby client for Zemanta
 
-This GEM provides Ruby client and comand-line tool for Zemanta API.
+This Gem provides Ruby client and comand-line tool for Zemanta API.
 
 ## Requirements
 
@@ -17,7 +17,31 @@ Or install it as seperate gem
 
 	$ gem install zemanta
 
-## Using Zemanta in your application
+## Using Zemanta from comand-line
+
+After installing the Gem create file ~/.zemanta with API key.
+
+	ZEMANTA_KEY="xxx"
+
+For comand-line usage use command -h. You will get following output...
+
+	Usage: zemanta COMMAND [options]
+
+	Commands
+		suggest: Suggest method allows to query Zemanta for contextual metadata about a given text.
+	Options
+	    -h, --help                       help
+	    -a, --api_key NEW_KEY            Zemanta api_key
+	        --text TEXT                  Text to work on
+	    -f, --file FILE                  File to work on
+	    -t, --type TYPE                  Output type (JSON or RB)
+	    -r, --result_field FIELD         Result field
+
+Usage example would be...
+
+	zemanta suggest -f test_file.txt -r articles -t json
+
+## Using Zemanta in your Ruby application
 
 You can use client from your Ruby code or from comand-line.
 

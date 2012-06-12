@@ -1,0 +1,103 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require 'zemanta'
+require 'pp'
+
+# Read content of ~/.zemanta or die.
+def read_key_from_zemanta_rc path=nil
+	path = "#{ENV['HOME']}/.zemanta" if path.nil?
+	unless File.exist? path
+		puts "Please create \"#{path}\" with content: "
+		puts "ZEMANTA_KEY=\"your_key_here\""
+		exit(1)
+	end
+	eval(File.read(path))
+	return ZEMANTA_KEY
+end
+
+api_key = ENV["ZEMANTA_KEY"]
+api_key = read_key_from_zemanta_rc if api_key.nil? or api_key.strip==""
+
+options = {
+	output_type: "RB"
+}
+
+parser = OptionParser.new do |opt|
+	opt.banner = "Usage: zemanta COMMAND [options]"
+	opt.separator ""
+	opt.separator "Commands"
+	opt.separator "	suggest: Suggest method allows to query Zemanta for contextual metadata about a given text."
+
+	# opt.separator "	suggest_markup: In comparison to suggest, this method returns only links to semantical entities."
+
+	opt.separator "Options"
+	opt.on("-h","--help","help") do
+    	puts parser
+  	end
+
+  	opt.on("-a","--api_key NEW_KEY","Zemanta api_key") do |a|
+  		api_key=a
+  	end
+
+  	opt.on("-t","--text TEXT","Text to work on") do |t|
+  		options[:text] = t
+  	end
+
+  	opt.on("-f","--file FILE","File to work on") do |t|
+  		if File.exist? t
+  			options[:text] = File.read(t)
+  		else
+  			puts "Can't read file: #{t}"
+  			exit(1)
+  		end
+  	end
+
+  	opt.on("-t","--type TYPE","Output type (JSON or RB)") do |t|
+  		allowed = %w(JSON RB)
+  		if allowed.include?t.upcase
+  			options[:output_type] = t.upcase
+  		else
+  			puts "Alowed output types: " + allowed.join(", ")
+  			exit(1)
+  		end
+  	end
+
+  	opt.on("-r","--result_field FIELD","Result field") do |o|
+  		options[:result_field] = o.split(",").map(&:strip).first
+  	end
+end
+
+# Dirty hack!!! 
+if not(ARGV[1].nil?) and ARGV[1][0] != "-"
+	options[:text] = ARGV[1]
+end
+
+parser.parse!
+
+##### The thing ######
+
+def output response, options
+	puts options[:output_type] 
+	if options[:output_type] =~ /json/i
+		puts response.to_json
+	else
+		pp response
+	end
+end
+
+z = Zemanta.new(api_key)
+
+case ARGV[0]
+when "suggest"
+	suggests = z.suggest(options[:text], options)
+	if options[:result_field].nil?
+		output(suggests,options)
+	else
+		output(suggests[ (options[:result_field]) ],options)
+	end
+#else
+#	puts "\"#{ARGV[0]}\" is not implemented in comand-line yet!!!"
+else
+	parser
+end
