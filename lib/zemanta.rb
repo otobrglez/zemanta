@@ -30,7 +30,9 @@ class Zemanta
 	# In comparison to zemanta.suggest, this method returns
 	# only links to semantical entities.
 	def suggest_markup text, options={}
-
+		get("suggest_markup",options.merge!({
+			text: text
+		}))
 	end
 
 	# TODO: Implement...
@@ -40,7 +42,8 @@ class Zemanta
 	# Get REST service with JSON response
 	def get(method,options)
 		options.merge!({
-			method: "zemanta.#{method}", api_key: @@api_key,
+			method: "zemanta.#{method}",
+			api_key: @@api_key,
 			format: "json"})
 
 		handle_response(

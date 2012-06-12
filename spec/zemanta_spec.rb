@@ -71,19 +71,20 @@ describe Zemanta do
 			suggests['articles'].size.should == 2
 			suggests['images'].should be_nil
 		end
-
-=begin
-		it "has \"magic\" methods" do
-			suggests = z.suggest("
-				Ronald Reagan je bil 40. predsednik ZDA v letih 1981-1989 in 33. guverner drzave Kalifornija v letih 1967-1975.
-				Pred vstopom v politiko je bil Reagan tudi napovedovalec, filmski igralec in predsednik Ameriskega zdruzenja igralcev.
-			")
-
-			suggests.should respond_to :articles
-			suggests['articles'].should == suggests.articles
-		end
-=end
-
 	end
 
+	context "#suggest_markup" do
+		let(:z){ Zemanta.new(ENV["ZEMANTA_KEY"]) }
+		it "can #suggest_markup to some text" do
+			suggests = z.suggest_markup "
+				The Phoenix Mars Lander has successfully deployed its robotic arm and
+tested other instruments including a laser designed to detect dust,
+clouds, and fog. The arm will be used to dig up samples of the Martian
+surface which will be analyzed as a possible habitat for life.
+			"
+
+			suggests["markup"].should_not be_nil
+			suggests["markup"]["text"].should_not be_nil
+		end
+	end
 end

@@ -33,7 +33,7 @@ Or if you like class wide key...
 
 The 3rd option is to set enviroment variable "ZEMANTA_KEY" and client will pick it up.
 
-### Suggests
+### Suggests with #suggest method
 
 Zemanta API provides 3 methods; and so does this client.
 You can use suggest method like so...
@@ -53,6 +53,16 @@ You can use suggest method like so...
 For more information and structure look at this resource:
 http://developer.zemanta.com/docs/suggest/
 
+### Suggests with #suggest_markup
+
+In comparison to #zemanta_suggest, this method returns only links to semantical entities.
+
+	z = Zemanta.new.suggest_markup("My long text goes here...")
+	suggests['markup']
+
+For more information about this response see suggest_markup method documentation here:
+http://developer.zemanta.com/docs/suggest_markup/
+
 ### Client options
 
 Zemanta API methods also provide some additional options. You can use them like so:
@@ -66,6 +76,10 @@ Zemanta API methods also provide some additional options. You can use them like 
 
 For more options please read:
 http://developer.zemanta.com/docs/suggest/
+
+## Testing and developement
+
+Client is tested/build with RSpec with help of Guard, but it does NOT use mockups or anything like that. For testing and developement you must get your own Zemanta API Key.
 
 ## About
 
