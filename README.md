@@ -4,8 +4,8 @@ This GEM provides Ruby client and comand-line tool for Zemanta API.
 
 ## Requirements
 
-To use this client you must gain API key. You can get API key
-on http://developer.zemanta.com
+To use this client you must gain API key.
+You can get API key on http://developer.zemanta.com
 
 ## Installation
 
@@ -82,7 +82,7 @@ http://developer.zemanta.com/docs/suggest/
 
 ## Limits
 
-Your daily limit is set at 1.000 calls per day. Send us email to support@zemanta.com to make it 10.000 calls per day.
+Your daily limit is set at 1.000 calls per day. Send email to support@zemanta.com to make it 10.000 calls per day.
 
 ## Testing and developement
 
@@ -92,3 +92,7 @@ Client is tested/build with RSpec with help of Guard, but it does NOT use mockup
 
 This is unofficial client and comes without any warranty. Please
 read and use documentation provided by Zemanta.
+
+## Contribution and authors
+
+Oto Brglez - <oto.brglez@opalab.com>
