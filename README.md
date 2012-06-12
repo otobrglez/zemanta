@@ -19,7 +19,7 @@ Or install it as seperate gem
 
 ## Using Zemanta in your application
 
-You can you client from your Ruby code or from comand line.
+You can use client from your Ruby code or from comand-line.
 
 ### Configuration
 
