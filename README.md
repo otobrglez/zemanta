@@ -50,7 +50,8 @@ You can use suggest method like so...
 	suggests['categories']
 	suggests['rich_objects']
 
-For more information and structure look at this resource:
+For more information and structure look at this #suggest resource.
+
 http://developer.zemanta.com/docs/suggest/
 
 ### Suggests with #suggest_markup
@@ -60,7 +61,8 @@ In comparison to #zemanta_suggest, this method returns only links to semantical 
 	z = Zemanta.new.suggest_markup("My long text goes here...")
 	suggests['markup']
 
-For more information about this response see suggest_markup method documentation here:
+For more information about this response see suggest_markup method documentation.
+
 http://developer.zemanta.com/docs/suggest_markup/
 
 ### Client options
