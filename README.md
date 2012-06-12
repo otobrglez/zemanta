@@ -39,7 +39,7 @@ For comand-line usage use command -h. You will get following output...
 
 Usage example would be...
 
-	zemanta suggest -f test_file.txt -r articles -t json
+	zemanta suggest -f test_file.txt -r articles -m json
 
 ## Using Zemanta in your Ruby application
 
