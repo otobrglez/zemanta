@@ -53,7 +53,7 @@ parser = OptionParser.new do |opt|
   		end
   	end
 
-  	opt.on("-t","--type TYPE","Output type (JSON or RB)") do |t|
+  	opt.on("-m","--mtype TYPE","Output type (JSON or RB)") do |t|
   		allowed = %w(JSON RB)
   		if allowed.include?t.upcase
   			options[:output_type] = t.upcase

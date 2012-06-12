@@ -32,9 +32,9 @@ For comand-line usage use command -h. You will get following output...
 	Options
 	    -h, --help                       help
 	    -a, --api_key NEW_KEY            Zemanta api_key
-	        --text TEXT                  Text to work on
+	    -t, --text TEXT                  Text to work on
 	    -f, --file FILE                  File to work on
-	    -t, --type TYPE                  Output type (JSON or RB)
+	    -m, --mtype TYPE                 Output type (JSON or RB)
 	    -r, --result_field FIELD         Result field
 
 Usage example would be...
